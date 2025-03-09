@@ -17,16 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Newtonsoft.Json" />
-    <None Remove="BCrypt.Net-Next" />
-    <None Remove="Microsoft.Extensions.DependencyInjection" />
-    <None Remove="MongoDB.Driver" />
-    <None Remove="Services\" />
-    <None Remove="Models\" />
-    <None Remove="Properties\" />
-    <None Remove="Data\" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Services\" />
     <Folder Include="Models\" />
     <Folder Include="Properties\" />
