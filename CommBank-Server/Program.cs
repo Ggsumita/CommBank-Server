@@ -1,4 +1,4 @@
-﻿using CommBank.Models;
+using CommBank.Models;
 using CommBank.Services;
 using MongoDB.Driver;
 
@@ -9,11 +9,18 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Load Secrets.json for connection string
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("Secrets.json");
 
-var mongoClient = new MongoClient(builder.Configuration.GetConnectionString("CommBank"));
+// Get connection string and print for debugging
+var connectionString = builder.Configuration.GetConnectionString("CommBank");
+Console.WriteLine($"Connection String: {connectionString}");  // This will print the connection string
+
+// MongoDB Client Setup
+var mongoClient = new MongoClient(connectionString);
 var mongoDatabase = mongoClient.GetDatabase("CommBank");
 
+// Register services
 IAccountsService accountsService = new AccountsService(mongoDatabase);
 IAuthService authService = new AuthService(mongoDatabase);
 IGoalsService goalsService = new GoalsService(mongoDatabase);
@@ -50,4 +57,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
