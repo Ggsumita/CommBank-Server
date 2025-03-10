@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Ensure that Secrets.json is loaded correctly
-builder.Configuration.SetBasePath(Directory.GetCurrentDirectory())
+builder.Configuration.SetBasePath(Directory.GetCurrentDirectory() + "/CommBank-Server")
     .AddJsonFile("Secrets.json", optional: false, reloadOnChange: true);
 
 // Debug: Print the connection string to verify it is loaded
